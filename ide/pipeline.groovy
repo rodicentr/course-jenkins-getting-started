@@ -2,11 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+
+        stage('Checkout') {
             steps {
-                // Get some code from a GitHub repository
+                                // Get some code from a GitHub repository
                 git branch: 'main', url: 'https://github.com/rodicentr/jgsu-spring-petclinic.git'
-                
+            }
+        }
+
+        stage('Build') {
+
+            steps {
                 sh './mvnw clean package'
             }
             
